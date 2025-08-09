@@ -275,3 +275,51 @@
 
 })(jQuery);
 
+// Contact Form AJAX Submission
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent normal form submission
+            
+            const form = this;
+            const submitBtn = document.getElementById('submit-btn');
+            const statusDiv = document.getElementById('form-status');
+            const formData = new FormData(form);
+            
+            // Show loading state
+            submitBtn.value = 'Sending...';
+            submitBtn.disabled = true;
+            statusDiv.style.display = 'none';
+            
+            // Submit form via AJAX
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Success
+                    statusDiv.innerHTML = '<div class="alert alert-success"><strong>Success!</strong> Your message has been sent successfully. I\'ll get back to you soon!</div>';
+                    statusDiv.style.display = 'block';
+                    form.reset(); // Clear the form
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            })
+            .catch(error => {
+                // Error
+                statusDiv.innerHTML = '<div class="alert alert-danger"><strong>Error!</strong> Sorry, there was a problem sending your message. Please try again or contact me directly at darissojan@gmail.com</div>';
+                statusDiv.style.display = 'block';
+            })
+            .finally(() => {
+                // Reset button
+                submitBtn.value = 'Send Message';
+                submitBtn.disabled = false;
+            });
+        });
+    }
+});
