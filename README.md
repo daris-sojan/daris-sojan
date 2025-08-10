@@ -42,7 +42,6 @@ Fast prototyping + pragmatic production-ready steps is my usual workflow.
 ---
 
 **Quick highlights:**
-- 🥇 **1st Prize — CuraBot** (*AI-powered smart healthcare assistant — my first hackathon win*)
 - 🥇 **1st Prize — ICTAK TECHATHLON 2025**
 - 🥇 **1st Prize — EDEN 4.0 Hackathon** (Inspira Marian IEDC × µLearn MCE)
 - 🥉 **3rd Place — National-Level Gen AI Hackathon (amFOSS)**
